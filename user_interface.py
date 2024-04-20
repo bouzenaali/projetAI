@@ -21,11 +21,18 @@ def main():
         "PreferredType": ["None", "Science", "Engineering", "Social Science", "Humanities"]
     }
 
+    questions = {
+        "PreferredField": "What field of study are you interested in?",
+        "PreferredJobProspects": "What level of job prospects are you looking for?",
+        "PreferredHighSchool": "What type of high school did you attend?",
+        "PreferredType": "What type of field are you interested in?"
+    }
+
     preferences = {}
 
     # Ask questions and get answers
-    for answer, options in answers.items():
-        preferences[answer] = st.selectbox(answer, options)
+    for answer, question_text in questions.items():
+        preferences[answer] = st.selectbox(question_text, answers[answer])
 
     # Button to get recommendations
     if st.button("Get Recommendations"):
