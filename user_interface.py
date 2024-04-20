@@ -14,7 +14,7 @@ def main():
     st.title("kheyer specialite Expert System")
 
     # Questions with predefined answers
-    questions = {
+    answers = {
         "PreferredField": ["None", "Computer Science", "Mechanical Engineering", "Psychology", "Economics", "Art History", "Biology", "History", "Physics", "Political Science", "Mathematics", "Chemistry", "Philosophy", "Sociology", "Anthropology", "Geology", "Linguistics", "Astronomy"],
         "PreferredJobProspects": ["None", "High", "Medium", "Low"],
         "PreferredHighSchool": ["Scientific", "Literary"],
@@ -24,8 +24,8 @@ def main():
     preferences = {}
 
     # Ask questions and get answers
-    for question, options in questions.items():
-        preferences[question] = st.selectbox(question, options)
+    for answer, options in answers.items():
+        preferences[answer] = st.selectbox(answer, options)
 
     # Button to get recommendations
     if st.button("Get Recommendations"):
