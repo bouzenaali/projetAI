@@ -24,7 +24,8 @@ python user_interface.py
 4. Check the web app on `http://localhost:8501`
 
 ### Contributors
-@bouzenaali and @romi
+- BOUZENA Ali
+- SAOUDI Romissa
 
 ## Acknowledgements
 This project is an academic project for the `Introduction to Artificial Inteligence` course 
