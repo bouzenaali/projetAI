@@ -5,6 +5,7 @@ kb = FolKB()
 # Define fields of study
 fields = [
     {"name": "Computer Science", "type": "Science", "interest": "High", "job_prospects": "High", "high_school": "Scientific"},
+    {"name": "Computer Engineering", "type": "Engineering", "interest": "High", "job_prospects": "High", "high_school": "Scientific"},
     {"name": "Mechanical Engineering", "type": "Engineering", "interest": "Medium", "job_prospects": "High", "high_school": "Scientific"},
     {"name": "Psychology", "type": "Social Science", "interest": "High", "job_prospects": "Medium", "high_school": "Literary"},
     {"name": "Economics", "type": "Social Science", "interest": "Medium", "job_prospects": "High", "high_school": "Scientific"},
@@ -31,8 +32,8 @@ for field in fields:
     kb.tell(expr(f'JobProspects("{field["name"]}", "{field["job_prospects"]}")'))
     kb.tell(expr(f'HighSchool("{field["name"]}", "{field["high_school"]}")'))
 
+
 # Rules and Preferences
-# Recommend a field if it matches the student's preferences
 kb.tell(expr('PreferredField(Me, x) & Field(x) ==> RecommendField(x, Me)'))
 kb.tell(expr('PreferredJobProspects(Me, y) & JobProspects(x, y) ==> RecommendField(x, Me)'))
 kb.tell(expr('PreferredHighSchool(Me, z) & HighSchool(x, z) ==> RecommendField(x, Me)'))
@@ -45,3 +46,4 @@ kb.tell(expr('PreferField(Me, x) & Interest(x, "Medium") & Not(Interest(x, "High
 kb.tell(expr('PreferField(Me, x) & Interest(x, "High") ==> RecommendField(x, Me)'))
 kb.tell(expr('PreferField(Me, x) & PreferField(Me, y) & Interest(x, "High") & Interest(y, "Medium") ==> RecommendField(x, Me)'))
 kb.tell(expr('PreferField(Me, x) & PreferField(Me, y) & Interest(x, "Medium") & Interest(y, "Low") ==> RecommendField(x, Me)'))
+

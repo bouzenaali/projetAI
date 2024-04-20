@@ -15,10 +15,10 @@ def main():
 
     # Questions with predefined answers
     questions = {
-        "PreferredField": ["Computer Science", "Mechanical Engineering", "Psychology", "Economics", "Art History", "Biology", "History", "Physics", "Political Science", "Mathematics", "Chemistry", "Philosophy", "Sociology", "Anthropology", "Geology", "Linguistics", "Astronomy","None"],
-        "PreferredJobProspects": ["High", "Medium", "Low"],
+        "PreferredField": ["None", "Computer Science", "Mechanical Engineering", "Psychology", "Economics", "Art History", "Biology", "History", "Physics", "Political Science", "Mathematics", "Chemistry", "Philosophy", "Sociology", "Anthropology", "Geology", "Linguistics", "Astronomy"],
+        "PreferredJobProspects": ["None", "High", "Medium", "Low"],
         "PreferredHighSchool": ["Scientific", "Literary"],
-        "PreferredType": ["Science", "Engineering", "Social Science", "Humanities"]
+        "PreferredType": ["None", "Science", "Engineering", "Social Science", "Humanities"]
     }
 
     preferences = {}

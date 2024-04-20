@@ -29,4 +29,5 @@ def suggest_fields(preferences):
     for question, option in preferences.items():
         kb.retract(expr(f'{question}(Me, "{option}")'))
 
+
     return recommended_fields
