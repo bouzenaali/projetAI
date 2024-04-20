@@ -1,39 +1,35 @@
-class UserInterface:
-    def display_welcome_message(self):
-        print("Welcome to the Educational Guidance Expert System!")
-        print("Please enter the subjects you excel in, love, or hate (separated by commas).")
-        print("For example: 'Mathematics, Literature, Biology'")
-        print("You can also specify your preferences like 'loves Mathematics, hates Physics'")
-        print("Type 'exit' to quit.")
+import streamlit as st
+from field_suggestion import suggest_fields
 
-    def prompt_user_input(self):
-        while True:
-            user_input = input("Your input: ").strip()
-            if user_input.lower() == 'exit':
-                return 'exit'
-            elif user_input:
-                return user_input
-            else:
-                print("Invalid input. Please try again.")
+def get_recommendations(preferences):
+    recommended_fields = suggest_fields(preferences)
+    if not recommended_fields:
+        st.info("No recommendations found based on specified preferences.")
+    else:
+        st.success("Recommended Fields:")
+        for field in recommended_fields:
+            st.write("-", field)
 
-    def get_preferences(self, user_input):
-        loves = []
-        hates = []
+def main():
+    st.title("kheyer specialite Expert System")
 
-        # Parse user input to extract loves and hates
-        for part in user_input.split(','):
-            part = part.strip().lower()
-            if 'loves' in part:
-                loves.append(part.split('loves')[1].strip())
-            elif 'hates' in part:
-                hates.append(part.split('hates')[1].strip())
+    # Questions with predefined answers
+    questions = {
+        "PreferredField": ["Computer Science", "Mechanical Engineering", "Psychology", "Economics", "Art History", "Biology", "History", "Physics", "Political Science", "Mathematics", "Chemistry", "Philosophy", "Sociology", "Anthropology", "Geology", "Linguistics", "Astronomy","None"],
+        "PreferredJobProspects": ["High", "Medium", "Low"],
+        "PreferredHighSchool": ["Scientific", "Literary"],
+        "PreferredType": ["Science", "Engineering", "Social Science", "Humanities"]
+    }
 
-        return loves, hates
+    preferences = {}
 
-    def display_recommendations(self, recommendations):
-        if recommendations:
-            print("\nRecommended academic programs:")
-            for program in recommendations:
-                print("-", program)
-        else:
-            print("\nNo recommendations found.")
+    # Ask questions and get answers
+    for question, options in questions.items():
+        preferences[question] = st.selectbox(question, options)
+
+    # Button to get recommendations
+    if st.button("Get Recommendations"):
+        get_recommendations(preferences)
+
+if __name__ == "__main__":
+    main()
